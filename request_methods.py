@@ -26,20 +26,24 @@ for i in range(len(request_methods)):
      if request_methods[i] == "POST":
          for index in range(len(request_methods)):
             response = requests.post("https://playground.learnqa.ru/ajax/api/compare_query_type", data={'method': {request_methods[index]}})
+            print(f"4.1.{request_methods[index]}")
             print(response.text + "\n")
 
      elif request_methods[i] == 'GET':
          for index in range(len(request_methods)):
             response = requests.get("https://playground.learnqa.ru/ajax/api/compare_query_type", params={'method': {request_methods[index]}})
+            print(f"4.2.{request_methods[index]}:")
             print(response.text + "\n")
 
      elif request_methods[i] == 'PUT':
          for index in range(len(request_methods)):
             response = requests.put("https://playground.learnqa.ru/ajax/api/compare_query_type", data={'method': {request_methods[index]}})
+            print(f"4.3.{request_methods[index]}:")
             print(response.text + "\n")
 
      elif request_methods[i] == 'DELETE':
          for index in range(len(request_methods)):
             response = requests.delete("https://playground.learnqa.ru/ajax/api/compare_query_type", data={'method': {request_methods[index]}})
+            print(f"4.4.{request_methods[index]}:")
             print(response.text + "\n")
 
