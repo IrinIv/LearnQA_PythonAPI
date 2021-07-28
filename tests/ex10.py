@@ -1,4 +1,3 @@
-import pytest
 
 def test_phrase():
     phrase = input("Set a phrase: ")
