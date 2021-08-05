@@ -69,7 +69,7 @@ class TestUserEdit(BaseCase):
         token = self.get_header(response, "x-csrf-token")
 
         # new user was registered right before this test
-        new_user_id = 6575
+        new_user_id = 6598
 
         new_name = "Changed name"
         response1 = MyRequests.put(f"/user/{new_user_id}",
@@ -81,17 +81,23 @@ class TestUserEdit(BaseCase):
         Assertions.assert_code_status(response1, 400)
 
     def test_edit_wrong_email_format(self):
-        data = {
-            'email': 'learnqa08052021122142@example.com',
-            'password': '123'
+        register_data = self.prepare_registration_data()
+        response = MyRequests.post("/user/", data=register_data)
+
+        email = register_data['email']
+        password = register_data['password']
+
+        login_data = {
+            'email': email,
+            'password': password
         }
 
-        response = MyRequests.post("/user/login", data=data)
+        response = MyRequests.post("/user/login", data=login_data)
 
         auth_sid = self.get_cookie(response, "auth_sid")
         token = self.get_header(response, "x-csrf-token")
 
-        new_email = 'learnqa08052021122142example.com'
+        new_email = email.replace("@", "")
 
         response1 = MyRequests.put(f"/user/login",
                                    headers={"x-csrf-token": token},
@@ -103,12 +109,18 @@ class TestUserEdit(BaseCase):
         assert response1.text == "Wrong HTTP method"
 
     def test_edit_user_with_short_firstName(self):
-        data = {
-            'email': 'learnqa08052021122142@example.com',
-            'password': '123'
+        register_data = self.prepare_registration_data()
+        response = MyRequests.post("/user/", data=register_data)
+
+        email = register_data['email']
+        password = register_data['password']
+
+        login_data = {
+            'email': email,
+            'password': password
         }
 
-        response = MyRequests.post("/user/login", data=data)
+        response = MyRequests.post("/user/login", data=login_data)
 
         auth_sid = self.get_cookie(response, "auth_sid")
         token = self.get_header(response, "x-csrf-token")
