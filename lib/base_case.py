@@ -36,4 +36,26 @@ class BaseCase:
             'email': email
         }
 
+    def data_with_short_name(self, email, firstName):
+        return{
+            'password': '123',
+            'username': 'learnqa',
+            'firstName': firstName,
+            'lastName': 'learnqa',
+            'email': email
+    }
+
+    def data_with_long_name(self, email, firstName):
+        return{
+            'password': '123',
+            'username': 'learnqa',
+            'firstName': firstName,
+            'lastName': 'learnqa',
+            'email': email
+    }
+
+
+
+
+
 
