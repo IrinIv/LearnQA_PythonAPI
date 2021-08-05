@@ -36,7 +36,8 @@ class BaseCase:
             'email': email
         }
 
-    def data_with_wrong_size_name(self, email, firstName):
+    @staticmethod
+    def data_with_wrong_size_name(email, firstName):
         return{
             'password': '123',
             'username': 'learnqa',
