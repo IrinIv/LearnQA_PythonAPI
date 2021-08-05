@@ -57,7 +57,7 @@ class TestUserRegister(BaseCase):
     def test_create_user_with_short_firstName(self):
         email = 'vinkotov@example.com'
         firstName = 'l'
-        data = self.data_with_short_name(email, firstName)
+        data = self.data_with_wrong_size_name(email, firstName)
 
         response = MyRequests.post("/user/", data=data)
 
@@ -72,7 +72,7 @@ class TestUserRegister(BaseCase):
                     'asdahsdjhasdjhaskjdhaksdhaskjdhaksdhakdhakhdakshdakhdaskhdakdakdaldladalsdalskdalkdalkdaldasldkalsdal' \
                     'sdaksjdkasjdakjdaksjd'
 
-        data = self.data_with_short_name(email, firstName)
+        data = self.data_with_wrong_size_name(email, firstName)
 
         response = MyRequests.post("/user/", data=data)
 
