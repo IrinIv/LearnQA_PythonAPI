@@ -77,9 +77,6 @@ class TestUserDelete(BaseCase):
                                       cookies={"auth_sid": auth_sid}
                                       )
 
-
         response3 = MyRequests.get(f"/user/{wrong_user_id}")
 
         Assertions.assert_code_status(response3, 200)
-
-
