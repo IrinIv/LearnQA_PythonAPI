@@ -90,3 +90,5 @@ class TestUserRegister(BaseCase):
         assert response.text == f"The value of '{'firstName'}' field is too long"
 
 # python3 -m pytest -s tests/test_user_register.py -k test_create_user_successfully
+# python3 -m pytest --alluredir=test_results/ tests/
+# allure serve test_results/
